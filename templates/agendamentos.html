@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Agendamentos{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+    <h4 class="fw-bold mb-0"><i class="bi bi-calendar3 me-2"></i>Lista de Agendamentos</h4>
+    <a href="{{ url_for('novo_agendamento') }}" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>Novo
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body py-3">
+        <form method="GET" action="{{ url_for('agendamentos') }}" class="row g-2 align-items-end">
+            <div class="col-sm-4">
+                <label class="form-label mb-1 small fw-semibold">Filtrar por data</label>
+                <input type="date" name="data" class="form-control form-control-sm" value="{{ filtro_data }}" />
+            </div>
+            <div class="col-sm-4">
+                <label class="form-label mb-1 small fw-semibold">Filtrar por paciente</label>
+                <input type="text" name="paciente" class="form-control form-control-sm" placeholder="Nome do paciente..." value="{{ filtro_paciente }}" />
+            </div>
+            <div class="col-sm-4 d-flex gap-2">
+                <button type="submit" class="btn btn-sm btn-secondary flex-grow-1">
+                    <i class="bi bi-filter me-1"></i>Filtrar
+                </button>
+                <a href="{{ url_for('agendamentos') }}" class="btn btn-sm btn-outline-secondary">
+                    Limpar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
